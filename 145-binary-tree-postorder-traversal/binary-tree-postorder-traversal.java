@@ -29,7 +29,7 @@ class Solution {
                     temp=st.pop();
                     post.add(temp.val);
                     
-                    while(!st.isEmpty()&&temp==st.peek().right){
+                    while(!st.isEmpty() && temp==st.peek().right){
                         temp=st.pop();
                         post.add(temp.val);
                     }
