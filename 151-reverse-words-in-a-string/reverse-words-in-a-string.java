@@ -1,21 +1,25 @@
 class Solution {
     public String reverseWords(String s) {
-        List<String>list=new ArrayList<>();
-        StringBuilder sb=new StringBuilder();
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i)!=' '){
-                sb.append(s.charAt(i));
+        StringBuilder ans = new StringBuilder();
+        int n = s.length();
+
+        for (int i = n - 1; i >= 0; i--) {
+
+            StringBuilder word = new StringBuilder();
+
+            // Build the word in reverse
+            while (i >= 0 && s.charAt(i) != ' ') {
+                word.append(s.charAt(i));
+                i--;
             }
-            else if(sb.length()>0){
-                list.add(sb.toString());
-                sb.setLength(0);
+            if (word.length() > 0) {
+                word.reverse();
+                ans.append(" ").append(word);
             }
         }
-        if(sb.length()>0){
-            list.add(sb.toString());
-        }
-        Collections.reverse(list);
-        return String.join(" ",list);
+
+        // Remove the first extra space
+        return ans.length() == 0 ? "" : ans.substring(1);
         
     }
 }
