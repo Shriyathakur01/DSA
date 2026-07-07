@@ -1,6 +1,6 @@
 class Solution {
     public int romanToInt(String s) {
-        //iterate and if less than the ans subtract if greater than ans add it and then finally add last value.
+        //if smaller comes before larger subtract it
         int n=s.length();
         Map<Character,Integer>map=new HashMap<>();
         map.put('I',1);
@@ -12,9 +12,8 @@ class Solution {
         map.put('M',1000);
         int ans=0;
         for(int i=0;i<n;i++){
-            int curr=map.get(s.charAt(i));
-            if(i<n-1 && curr<map.get(s.charAt(i+1))) ans -= curr;
-            else ans+= curr;
+            if(i<n-1 && map.get(s.charAt(i))<map.get(s.charAt(i+1))) ans-=map.get(s.charAt(i));
+            else ans+=map.get(s.charAt(i));
         }
         return ans;
     }
