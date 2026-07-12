@@ -11,11 +11,9 @@ class Solution {
             while(i>=0 && s.charAt(i)!=' '){
                 i--;
             }
-            int start=i+1;
             sb.append(" ");
-            sb.append(s,start,end+1);
+            sb.append(s,i+1,end+1);
         }
         return sb.toString().trim();
-        
     }
 }
