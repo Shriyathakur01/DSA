@@ -6,18 +6,13 @@ class Solution {
         int ans=0;
         while(low<=high){
             int mid=low+(high-low)/2;
-
             if((long)mid*mid==x) return mid;
             else if((long)mid*mid<x){
                 ans=mid;
                 low=mid+1;
             }
-            else{
-                high=mid-1;
-            }
+            else high=mid-1;
         }
         return ans;
-        
-        
     }
 }
