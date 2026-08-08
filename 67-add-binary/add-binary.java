@@ -15,7 +15,7 @@ class Solution {
                 j--;
             }
             sb.append(sum%2);
-            carry=(sum/2);
+            carry=sum/2;
         }
         return sb.reverse().toString();
     }
