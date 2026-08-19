@@ -1,12 +1,12 @@
 class Solution {
-    public int eraseOverlapIntervals(int[][] mat) {
-        Arrays.sort(mat,(a,b)->a[1]-b[1]);
+    public int eraseOverlapIntervals(int[][] intervals) {
+        Arrays.sort(intervals,(a,b)->a[1]-b[1]);
+        int n=intervals.length;
         int count=0;
-        int endingTime=mat[0][1];
-        for(int j=1;j<mat.length;j++){
-            if(endingTime>mat[j][0]) count++;
-
-            else endingTime=mat[j][1];
+        int endTime=intervals[0][1];
+        for(int i=1;i<n;i++){
+            if(intervals[i][0]<endTime) count++;
+            else endTime=intervals[i][1];
         }
         return count;
     }
