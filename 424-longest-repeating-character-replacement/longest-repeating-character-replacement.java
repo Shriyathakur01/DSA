@@ -1,11 +1,11 @@
 class Solution {
     public int characterReplacement(String s, int k) {
-        int l=0,r=0;
+        int[] hash=new int[26];
         int maxlen=0;
         int maxfreq=0;
-        int n=s.length();
-        int[] hash=new int[26];
-        while(r<n){
+        int l=0;
+        int r=0;
+        while(r<s.length()){
             hash[s.charAt(r)-'A']++;
             maxfreq=Math.max(maxfreq,hash[s.charAt(r)-'A']);
             if((r-l+1)-maxfreq>k){
@@ -16,5 +16,6 @@ class Solution {
             r++;
         }
         return maxlen;
+        
     }
 }
