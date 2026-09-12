@@ -1,5 +1,5 @@
 class Solution {
-    Boolean [][]dp;
+    boolean [][]dp;
     public boolean canPartition(int[] nums) {
         int n=nums.length;
         int sum=0;
@@ -7,21 +7,24 @@ class Solution {
             sum+=x;
         }
 
-        dp=new Boolean[n+1][sum+1];
+        dp=new boolean[n+1][sum+1];
         if(sum%2==1) return false;
         int target=sum/2;
         return helper(nums,n,target);
     }
 
     private boolean helper(int[]nums,int n,int sum){
-        if(sum==0) return true;
-        else if(n==0) return false;
-        else if(dp[n][sum]!=null) return dp[n][sum];
-        else if(nums[n-1]>sum){
-            dp[n][sum]=helper(nums,n-1,sum);
-        }
-        else{
-            dp[n][sum]=helper(nums,n-1,sum-nums[n-1])||helper(nums,n-1,sum);
+        for(int i=0;i<n+1;i++){
+            for(int j=0;j<sum+1;j++){
+                if(i==0) dp[i][j]=false;
+                else if(j==0) dp[i][j]=true;
+                else if(nums[i-1]<=j){
+                    dp[i][j]=dp[i-1][j-nums[i-1]] || dp[i-1][j];
+                }
+                else{
+                    dp[i][j]=dp[i-1][j];
+                }
+            }
         }
         return dp[n][sum];
     }
