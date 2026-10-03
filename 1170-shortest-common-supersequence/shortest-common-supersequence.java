@@ -2,8 +2,7 @@ class Solution {
     public String shortestCommonSupersequence(String str1, String str2) {
         int n=str1.length();
         int m=str2.length();
-        int t[][]=new int[n+1][m+1];
-
+        int[][]t=new int[n+1][m+1];
         for(int i=0;i<n+1;i++){
             for(int j=0;j<m+1;j++){
                 if(i==0 || j==0) t[i][j]=0;
@@ -13,9 +12,10 @@ class Solution {
                 else t[i][j]=Math.max(t[i-1][j],t[i][j-1]);
             }
         }
-        StringBuilder sb=new StringBuilder();
+
         int i=n;
         int j=m;
+        StringBuilder sb=new StringBuilder();
         while(i>0 && j>0){
             if(str1.charAt(i-1)==str2.charAt(j-1)){
                 sb.append(str1.charAt(i-1));
@@ -23,11 +23,11 @@ class Solution {
                 j--;
             }
             else if(t[i-1][j]>t[i][j-1]){
-                sb.append(str1.charAt(i - 1));
+                sb.append(str1.charAt(i-1));
                 i--;
             }
             else{
-                sb.append(str2.charAt(j - 1));
+                sb.append(str2.charAt(j-1));
                 j--;
             }
         }
@@ -39,9 +39,7 @@ class Solution {
             sb.append(str2.charAt(j-1));
             j--;
         }
+
         return sb.reverse().toString();
-
     }
-
-    
 }
