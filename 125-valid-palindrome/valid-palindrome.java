@@ -6,8 +6,7 @@ class Solution {
         int r=n-1;
         while(l<r){
             if(s.charAt(l)!=s.charAt(r)) return false;
-            l++;
-            r--;
+            l++;r--;
         }
         return true;
     }
