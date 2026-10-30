@@ -1,21 +1,20 @@
 class Solution {
-    public int numSubarraysWithSum(int[] nums, int goal) {
-        return helper(nums,goal)-helper(nums,goal-1);
+    public int numSubarraysWithSum(int[] arr, int goal) {
+        return helper(arr,goal)-helper(arr,goal-1);
     }
 
-    public int helper(int[]nums,int goal){
+    private int helper(int[]arr,int goal){
         if(goal<0) return 0;
-        int l=0;
-        int r=0;
-        int count=0;
+        int l=0,r=0;
         int sum=0;
-        while(r<nums.length){
-            sum+=nums[r];
+        int count=0;
+        while(r<arr.length){
+            sum+=arr[r];
             while(sum>goal){
-                if(nums[l]==1) sum-=1;
+                if(arr[l]==1) sum-=1;
                 l++;
             }
-            count+=r-l+1;
+            count+=r-l+1 ;
             r++;
         }
         return count;
