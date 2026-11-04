@@ -2,20 +2,22 @@ class Solution {
     static int[][]t;
     public int uniquePaths(int m, int n) {
         t=new int[m][n];
-        for(int[]rows:t){
-            Arrays.fill(rows,-1);
-        }
-        
         return helper(m-1,n-1);
     }
 
-    private int helper(int i,int j){
-        if(i==0 && j==0) return 1;
-        else if(i<0 || j<0) return 0;
-        if(t[i][j]!=-1) return t[i][j];
-        int up=helper(i-1,j);
-        int right=helper(i,j-1);
-        t[i][j]=up+right;
-        return t[i][j];
+    private int helper(int a,int b){
+        for(int i=0;i<a+1;i++){
+            for(int j=0;j<b+1;j++){
+                if(i==0 && j==0) t[i][j]=1;
+                else{
+                    int up=0;
+                    int left=0;
+                    if(i>0) up=t[i-1][j];
+                    if(j>0) left=t[i][j-1];
+                    t[i][j]=up+left;
+                }
+            }
+        }
+        return t[a][b];
     }
 }
