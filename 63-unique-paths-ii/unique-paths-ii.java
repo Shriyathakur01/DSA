@@ -1,23 +1,21 @@
 class Solution {
-    static int[][]t;
-    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        int m=obstacleGrid.length;
-        int n=obstacleGrid[0].length;
-        t=new int[m+1][n+1];
-        for(int[]rows:t){
-            Arrays.fill(rows,-1);
+    public int uniquePathsWithObstacles(int[][] arr) {
+        int m=arr.length;
+        int n=arr[0].length;
+        int[][]t=new int[m][n];
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(arr[i][j]==1) t[i][j]=0;
+                else if(i==0 && j==0)t[i][j]=1;
+                else{
+                    int left=0;
+                    int up=0;
+                    if(i>0)up=t[i-1][j];
+                    if(j>0)left=t[i][j-1];
+                    t[i][j]=left+up; 
+                }
+            }
         }
-        return helper(m-1,n-1,obstacleGrid);
-    }
-
-    private int helper(int a,int b,int[][]arr){
-        if(a>=0 && b>=0 && arr[a][b]==1) return 0;
-        if(a==0 && b==0) return 1;
-        if(a<0 || b<0) return 0;
-        if(t[a][b]!=-1) return t[a][b];
-        int up=helper(a-1,b,arr);
-        int left=helper(a,b-1,arr);
-        t[a][b]=up+left;
-        return t[a][b];
+        return t[m-1][n-1];
     }
 }
