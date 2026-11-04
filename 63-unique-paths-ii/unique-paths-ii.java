@@ -1,5 +1,9 @@
 class Solution {
     public int uniquePathsWithObstacles(int[][] arr) {
+
+        //using different m,n here compared to unique path because in this we are actually working with the original array so indexes should match
+
+
         int m=arr.length;
         int n=arr[0].length;
         int[][]t=new int[m][n];
