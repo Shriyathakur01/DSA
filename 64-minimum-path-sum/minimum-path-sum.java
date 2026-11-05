@@ -5,7 +5,7 @@ class Solution {
         int[][]t=new int[m][n];
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
-                if(i==0 && j==0)t[i][j]=grid[i][j];
+                if(i==0 && j==0)t[i][j]=grid[0][0];
                 // else if(i<0 || j<0) dp[i][j]=Integer.MAX_VALUE;
                 else{
                     int up=Integer.MAX_VALUE;
