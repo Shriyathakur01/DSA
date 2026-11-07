@@ -8,7 +8,7 @@ class Solution {
         }
 
         for(int i=n-2;i>=0;i--){
-            for(int j=0;j<=i;j++){
+            for(int j=i;j>=0;j--){
                 int down=t[i+1][j];
                 int diag=t[i+1][j+1];
                 t[i][j]=triangle.get(i).get(j)+Math.min(down,diag);
