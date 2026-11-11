@@ -15,8 +15,8 @@ class Solution {
     private boolean helper(int[]nums,int n,int target){
         for(int i=0;i<n+1;i++){
             for(int j=0;j<target+1;j++){
-                if(i==0)dp[i][j]=false;
-                else if(j==0) dp[i][j]=true;
+                if(j==0) dp[i][j]=true;
+                else if(i==0)dp[i][j]=false;
                 else if(nums[i-1]<=j){
                     dp[i][j]=dp[i-1][j-nums[i-1]]||dp[i-1][j];
                 }
