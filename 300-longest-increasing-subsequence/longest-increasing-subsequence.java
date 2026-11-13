@@ -8,10 +8,10 @@ class Solution {
             while(low<high){
                 int mid=low+(high-low)/2;
                 if(list.get(mid)<nums[i]) low=mid+1;
-                else high=mid; //no mid cuz searching lower bound
+                else high=mid;
             }
             if(low==list.size()) list.add(nums[i]);
-            else list.set(low,nums[i]);  //overwrite
+            else list.set(low,nums[i]);
         }
         return list.size();
     }
