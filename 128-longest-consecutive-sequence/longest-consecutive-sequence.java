@@ -5,10 +5,13 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             st.add(nums[i]);
         }
-        for(int x:st){
-            if(!st.contains(x-1)){
+
+        for(int n:st){
+            if(!st.contains(n-1)){
                 int len=1;
-                while(st.contains(x+len))len++;
+                while(st.contains(n+len)){
+                    len++;
+                }
                 res=Math.max(res,len);
             }
         }
