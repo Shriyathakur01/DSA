@@ -3,7 +3,7 @@ class Solution {
         int max=Arrays.stream(piles).max().getAsInt();
         int low=1;
         int high=max;
-        int ans=max;
+        int ans=0;
         while(low<=high){
             int mid=low+(high-low)/2;
             int hours=helper(piles,mid,h);
@@ -18,8 +18,8 @@ class Solution {
 
     private int helper(int[]piles,int hourly,int h){
         int hrs=0;
-        for(int pile:piles){
-            hrs+=Math.ceil((double)pile/hourly);
+        for(int x:piles){
+            hrs+=Math.ceil((double)x/hourly);
         }
         return hrs;
     }
