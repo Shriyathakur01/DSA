@@ -4,14 +4,13 @@ class Solution {
     }
 
     private int helper(int[]nums,int k){
-        if(k<0) return 0;
         int l=0,r=0;
         int count=0;
         int odd=0;
         while(r<nums.length){
             if(nums[r]%2==1) odd++;
             while(odd>k){
-                if(nums[l]%2==1) odd--;
+                if(nums[l]%2==1)odd--;
                 l++;
             }
             count+=r-l+1;
