@@ -15,7 +15,7 @@ class Solution {
                 if(nums[l]==1)sum-=1;
                 l++;
             }
-            count+=r-l+1;
+            if(sum<=k)count+=r-l+1;
             r++;
         }
         return count;
