@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-    private static ListNode reverse(ListNode head){
+    private ListNode reverse(ListNode head){
         ListNode curr=head;
         ListNode prev=null;
         ListNode front=null;
@@ -21,7 +21,6 @@ class Solution {
         }
         return prev;
     }
-
     public boolean isPalindrome(ListNode head) {
         ListNode slow=head;
         ListNode fast=head;
@@ -40,5 +39,4 @@ class Solution {
         }
         return true;
     }
-        
 }
