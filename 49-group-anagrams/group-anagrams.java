@@ -3,11 +3,11 @@ class Solution {
         HashMap<String,List<String>>map=new HashMap<>();
         for(String s:strs){
             int[]freq=new int[26];
-            for(char c:s.toCharArray()){
-                freq[c-'a']++;
+            for(char ch:s.toCharArray()){
+                freq[ch-'a']++;
             }
             String key=Arrays.toString(freq);
-            map.putIfAbsent(key,new ArrayList<>());
+            map.putIfAbsent(key,new ArrayList());
             map.get(key).add(s);
         }
         return new ArrayList<>(map.values());
