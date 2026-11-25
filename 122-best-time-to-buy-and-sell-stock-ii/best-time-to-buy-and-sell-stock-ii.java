@@ -1,21 +1,13 @@
 class Solution {
-    static int[][]dp;
     public int maxProfit(int[] prices) {
-        dp=new int[prices.length][2];
-        for(int[]arr:dp){
-            Arrays.fill(arr,-1);
+        int n=prices.length;
+        int[][]dp=new int[n+1][2];
+        for(int ind=n-1;ind>=0;ind--){
+            for(int buy=0;buy<=1;buy++){
+                if(buy==1)dp[ind][buy]=Math.max(-prices[ind]+dp[ind+1][0],dp[ind+1][1]);
+                else dp[ind][buy]=Math.max(prices[ind]+dp[ind+1][1],dp[ind+1][0]);
+            }
         }
-        return helper(0,1,prices);
-    }
-
-
-    private int helper(int ind,int buy,int[]arr){
-        if(ind==arr.length) return 0;
-        if(dp[ind][buy]!=-1) return dp[ind][buy];
-        if(buy==1){
-            dp[ind][buy]=Math.max(-arr[ind]+helper(ind+1,0,arr),helper(ind+1,1,arr));
-        }
-        else dp[ind][buy]=Math.max(arr[ind]+helper(ind+1,1,arr),helper(ind+1,0,arr));
-        return dp[ind][buy];
+        return dp[0][1];
     }
 }
